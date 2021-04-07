@@ -107,6 +107,10 @@ class FinalChallenge extends Simulation{
     )
   ).protocols(httpConf)
     .maxDuration(testDuration.seconds)
+    .assertions(
+      global.responseTime.max.lt(5),
+      global.successfulRequests.percent.gt(95)
+    )
 
   after{
     println("============TEST OVER============")
